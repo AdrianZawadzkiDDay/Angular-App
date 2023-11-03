@@ -1,10 +1,42 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Router, NavigationError } from '@angular/router';
+import {HomeComponent} from "./guest/home/home.component";
+import {LoginComponent} from "./guest/login/login.component";
+import {RegisterComponent} from "./guest/register/register.component";
+import { AdminComponent } from './admin/admin/admin.component';
+import {NotFoundComponent} from "./error/not-found/not-found.component";
+import {UnauthorizedComponent} from "./error/unauthorized/unauthorized.component";
+import {AuthGuard} from "./guards/auth.guard";
+import {Role} from "./models/role.enum";
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+
+  {path: 'home',
+   component: HomeComponent,
+   canActivate: [AuthGuard],
+   data: {roles: [Role.USER]}
+  },
+
+  { path: 'admin', 
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.ADMIN]}
+  },
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: '404', component: NotFoundComponent},
+  {path: '401', component: UnauthorizedComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+  constructor(private router: Router) {
+    this.router.errorHandler = (error: any) => {
+      this.router.navigate(['/404']);
+    };
+  }
+}
