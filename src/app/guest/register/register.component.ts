@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../models/user.model";
+import {RegisterUser} from "../../models/user.model";
 import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent implements OnInit {
 
-  user: User = new User();
+  registerUser: RegisterUser = new RegisterUser();
   faUser = faUserCircle;
   errorMessage: string = "";
 
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.authenticationService.register(this.user).subscribe(data => {
+    this.authenticationService.register(this.registerUser).subscribe(data => {
       this.router.navigate(['/login']);
     }, err => {
       if (err?.status === 409) {

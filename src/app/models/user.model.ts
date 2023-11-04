@@ -8,3 +8,10 @@ export class User {
   token: string = "";
   role: Role = Role.USER;
 }
+
+export class RegisterUser {
+  email: string = "";
+  firstname: string = "";
+  lastname: string = "";
+  password: string = "";
+}

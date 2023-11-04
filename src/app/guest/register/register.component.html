@@ -8,18 +8,34 @@
       </div>
 
       <div class="form-group">
-        <label for="name">Full Name</label>
+        <label for="name">First Name</label>
         <input
           type="text"
-          id="name"
-          name="name"
-          [(ngModel)]="user.name"
+          id="firsname"
+          name="firsname"
+          [(ngModel)]="registerUser.firstname"
           #name="ngModel"
           class="form-control"
           required
         />
         <div class="alert alert-danger" *ngIf="!name.valid && f.submitted">
-          Full name is required.
+          First name is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Last Name</label>
+        <input
+          type="text"
+          id="lastname"
+          name="lastname"
+          [(ngModel)]="registerUser.lastname"
+          #name="ngModel"
+          class="form-control"
+          required
+        />
+        <div class="alert alert-danger" *ngIf="!name.valid && f.submitted">
+          Last name is required.
         </div>
       </div>
 
@@ -29,7 +45,7 @@
           type="text"
           id="username"
           name="username"
-          [(ngModel)]="user.email"
+          [(ngModel)]="registerUser.email"
           #username="ngModel"
           class="form-control"
           required
@@ -45,7 +61,7 @@
           type="password"
           id="password"
           name="password"
-          [(ngModel)]="user.password"
+          [(ngModel)]="registerUser.password"
           #password="ngModel"
           class="form-control"
           required

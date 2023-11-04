@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
 import {BehaviorSubject, Observable} from "rxjs";
-import {User} from "../models/user.model";
+import {RegisterUser, User} from "../models/user.model";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map} from "rxjs/operators";
 
@@ -41,7 +41,7 @@ export class AuthenticationService {
     );
   }
 
-  register(user: User): Observable<any> {
+  register(user: RegisterUser): Observable<any> {
     return this.http.post(API_URL + 'register', user);
   }
 
