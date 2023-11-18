@@ -8,6 +8,7 @@ import {NotFoundComponent} from "./error/not-found/not-found.component";
 import {UnauthorizedComponent} from "./error/unauthorized/unauthorized.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {Role} from "./models/role.enum";
+import { ActivateInfoComponent } from './guest/activate/activate-info/activate-info.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -25,6 +26,8 @@ const routes: Routes = [
   },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'activateInfo', component: ActivateInfoComponent},
+
   {path: '404', component: NotFoundComponent},
   {path: '401', component: UnauthorizedComponent}
 ];
