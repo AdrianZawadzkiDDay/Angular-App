@@ -28,8 +28,12 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.user).subscribe(data => {
       this.router.navigate(['/home']);
     }, err => {
-      this.errorMessage = 'Username or password is incorrect.';
-      console.log(err);
+      if (err?.status === 409) {
+        this.errorMessage = 'User account is not active.';
+      } else {
+        this.errorMessage = 'Username or password is incorrect.';
+        console.log(err);
+      }
     })
   }
 

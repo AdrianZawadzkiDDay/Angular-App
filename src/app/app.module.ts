@@ -13,6 +13,7 @@ import { UnauthorizedComponent } from './error/unauthorized/unauthorized.compone
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from "@angular/forms";
 import { ActivateInfoComponent } from './guest/activate/activate-info/activate-info.component';
+import { ActivateAccountComponent } from './guest/activate/activate-component/activate-component.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ActivateInfoComponent } from './guest/activate/activate-info/activate-i
     AdminComponent,
     NotFoundComponent,
     UnauthorizedComponent,
-    ActivateInfoComponent
+    ActivateInfoComponent,
+    ActivateAccountComponent
   ],
   imports: [
     BrowserModule,
