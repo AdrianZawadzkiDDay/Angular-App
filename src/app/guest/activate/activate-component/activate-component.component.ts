@@ -18,14 +18,7 @@ export class ActivateAccountComponent  implements OnInit {
 
   ngOnInit(): void {
     const routeSnapshot = this.activatedRoute.snapshot;
-    console.log('route', routeSnapshot)
-
     const token: string = routeSnapshot.queryParams['activationCode'];
-    console.log('token', token)
-    console.log('token1', token === null)
-    console.log('token2', token === undefined)
-
-
     this.activatingAccount(token);
   }
 
