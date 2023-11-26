@@ -30,10 +30,14 @@ export class ActivateAccountComponent  implements OnInit {
     this.activationService.activation(token)
     .subscribe(data => {
       this.activationMessage = 'ACCOUNT ACTIVATED SUCCESSFULLY'
-
     }, err => {
-      console.error("Error during activating account: ", err)
-      this.errorMessage = 'Error occured during account activation.';
+      if (err.status === 401) {
+        console.error('Unauthorized error during activating account: ', err);
+        this.errorMessage = 'Unauthorized: Invalid or expired token.';
+      } else if (err.status === 409) {
+        console.error('Conflict error during activating account: ', err);
+        this.errorMessage = 'Error occurred during account activation.';
+      }
     });
   }
 }
