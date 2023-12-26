@@ -57,10 +57,14 @@ export class AuthenticationService {
       });
 
       this.http.post(API_URL + 'logout', null, { headers: headers })
-      .subscribe(response => {
+      .subscribe({
+        next: response => {
           console.log('Odpowiedź z serwera:', response);
-      }, error => {
+        },
+        error: error => {
           console.error('Błąd:', error);
+        },
+        complete: () => console.log('COMPLETE :)') 
       });
     }
    

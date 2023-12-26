@@ -41,8 +41,10 @@ const routes: Routes = [
 })
 export class AppRoutingModule { 
   constructor(private router: Router) {
-    this.router.errorHandler = (error: any) => {
-      this.router.navigate(['/404']);
-    };
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationError) {
+        this.router.navigate(['/404']);
+      }
+    });
   }
 }
